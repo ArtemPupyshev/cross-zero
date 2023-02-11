@@ -1,21 +1,21 @@
-a = int(input())
-b = int(input())
-c = int(input())
+R = int(input())
+G = int(input())
+B = int(input())
 
-a = hex(a)
-b = hex(b)
-c = hex(c)
+R = hex(R)
+G = hex(G)
+B = hex(B)
 
-a = a[2:]
-b = b[2:]
-c = c[2:]
+R = R[2:]
+G = G[2:]
+B = B[2:]
 
-a = a.zfill(2)
-b = b.zfill(2)
-c = c.zfill(2)
+R = R.zfill(2)
+G = G.zfill(2)
+B = B.zfill(2)
 
-a = a.upper()
-b = b.upper()
-c = c.upper()
+R = R.upper()
+G = G.upper()
+B = B.upper()
 
-print('#' + a + b + c)
+print('#' + R + G + B)
