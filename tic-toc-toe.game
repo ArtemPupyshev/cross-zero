@@ -6,7 +6,7 @@ battle = list(range(1, 10))
 def make_board(battle):
     print("* " * 7)
     for i in range(3):
-        print("", battle[0 + i * 3], "", battle[1 + i * 3], "", battle[2 + i * 3], "")
+        print("*", battle[0 + i * 3], "*", battle[1 + i * 3], "*", battle[2 + i * 3], "*")
         print("* " * 7)
 
 def player_input(cross_or_zero):
