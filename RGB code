@@ -1,0 +1,21 @@
+a = int(input())
+b = int(input())
+c = int(input())
+
+a = hex(a)
+b = hex(b)
+c = hex(c)
+
+a = a[2:]
+b = b[2:]
+c = c[2:]
+
+a = a.zfill(2)
+b = b.zfill(2)
+c = c.zfill(2)
+
+a = a.upper()
+b = b.upper()
+c = c.upper()
+
+print('#' + a + b + c)
