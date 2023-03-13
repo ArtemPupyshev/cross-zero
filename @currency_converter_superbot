@@ -2,7 +2,6 @@
 
 import requests
 import json
-import config
 import telebot
 TOKEN = '6294021873:AAEldaTH1T4Ik2k6tbcSPeXQVnnudbCu4vc'
 
