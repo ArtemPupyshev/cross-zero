@@ -1,0 +1,69 @@
+import random
+
+# создаем игровое поле
+board_size = 6
+board = [['O' for _ in range(board_size)] for _ in range(board_size)]
+
+# создаем корабли
+ships = [(3, [(random.randint(0, 5), random.randint(0, 3))]),
+         (2, [(random.randint(0, 4), random.randint(0, 4)) for _ in range(2)]),
+         (1, [(random.randint(0, 5), random.randint(0, 5)) for _ in range(4)])]
+
+# функция для нарисования поля
+def print_board(board):
+    print('  1 2 3 4 5 6')
+    for i in range(board_size):
+        print(chr(i+ord('A')), end=' ')
+        for j in range(board_size):
+            print(board[i][j], end=' ')
+        print()
+
+# проверка корректности хода
+def is_valid_move(move):
+    if move[0] < 0 or move[0] >= board_size or move[1] < 0 or move[1] >= board_size:
+        return False
+    if board[move[0]][move[1]] != 'O':
+        return False
+    return True
+
+# функция для размещения корабля
+def place_ship(ship):
+    for cell in ship[1]:
+        board[cell[0]][cell[1]] = 'X'
+
+
+for ship in ships:
+    place_ship(ship)
+
+# main игровой процесс
+while True:
+    # player's turn
+    print_board(board)
+    player_move = input("Ваш ход (например, A1): ")
+    player_row = ord(player_move[0]) - ord('A')
+    player_col = int(player_move[1]) - 1
+    if is_valid_move((player_row, player_col)):
+        print("Попал!")
+        board[player_row][player_col] = 'X'
+    else:
+        print("Промах!")
+    # проверка победителя(игрок)
+    if all(all(cell != 'O' for cell in row) for row in board):
+        print("Вы победили!")
+        break
+    # Ход компьютера
+    print("Очередь компьютера...")
+    while True:
+        ai_row = random.randint(0, 5)
+        ai_col = random.randint(0, 5)
+        if is_valid_move((ai_row, ai_col)):
+            break
+    if board[ai_row][ai_col] == 'X':
+        print("Компюьтер попадает", chr(ai_row+ord('A')) + str(ai_col+1) + "!")
+        board[ai_row][ai_col] = 'O'
+    else:
+        print("Компьютер промахнулся", chr(ai_row+ord('A')) + str(ai_col+1) + "!")
+    # проверка победителя(ИИ)
+    if all(all(cell != 'X' for cell in row) for row in board):
+        print("Вы проиграли!")
+        break
